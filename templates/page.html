@@ -1,0 +1,171 @@
+{% extends "template.html" %}
+
+{% block title %}
+
+{{ article.title }}
+
+{% endblock title %}
+
+{% block content %}
+<style>
+    
+
+    
+
+    /* Page Container */
+    .pages-container {
+        max-width: 1200px;
+        margin: 20px auto;
+        padding: 40px;
+        background-color: #fff;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Header */
+    .pages-header {
+        background-color: rgb(193, 27, 27);
+        color: #fff;
+        padding: 20px;
+        text-align: center;
+    }
+
+    .pages-header h1 {
+        font-family: 'Montserrat', sans-serif;
+        font-size: 2.5em;
+        font-weight: 700;
+        margin-bottom: 0;
+    }
+
+    /* Main Content */
+    .pages-content {
+        padding: 20px;
+    }
+
+    .pages-content h1,
+    .pages-content h2,
+    .pages-content h3,
+    .pages-content h4,
+    .pages-content h5,
+    .pages-content h6 {
+        font-family: 'Montserrat', sans-serif;
+        color: rgb(193, 27, 27);
+        margin-top: 20px;
+        margin-bottom: 10px;
+    }
+
+    .pages-content h1 {
+        font-size: 2.5em;
+    }
+
+    .pages-content h2 {
+        font-size: 2.2em;
+    }
+
+    .pages-content h3 {
+        font-size: 2em;
+    }
+
+    .pages-content h4 {
+        font-size: 1.8em;
+    }
+
+    .pages-content h5 {
+        font-size: 1.6em;
+    }
+
+    .pages-content h6 {
+        font-size: 1.4em;
+    }
+
+    .pages-content p {
+        margin-bottom: 20px;
+        line-height: 1.8;
+    }
+
+    /* CKEditor Styles */
+    .cke_editor {
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px;
+        background-color: #fff;
+    }
+
+    .cke_editor .cke_top {
+        background-color: rgb(193, 27, 27);
+        color: #fff;
+        border-bottom: 1px solid #ddd;
+    }
+
+    .cke_editor .cke_top .cke_toolbox {
+        background-color: rgb(193, 27, 27);
+    }
+
+    .cke_editor .cke_toolbar {
+        border-bottom: 1px solid #ddd;
+    }
+
+    .cke_editor .cke_editable {
+        min-height: 300px;
+        padding: 10px;
+        background-color: #fff;
+        color: #333;
+        font-family: 'Poppins', sans-serif;
+        line-height: 1.6;
+    }
+
+    img {
+        max-width: 100%;
+        /* Ensure images don't overflow their container */
+        height: auto;
+        /* Maintain aspect ratio */
+        flex: 1 1 auto;
+        /* Allow images to grow and shrink */
+        object-fit: cover;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .pages-header h1 {
+            font-size: 2em;
+        }
+
+        .pages-content h1 {
+            font-size: 2em;
+        }
+
+        .pages-content h2 {
+            font-size: 1.8em;
+        }
+
+        .pages-content h3 {
+            font-size: 1.6em;
+        }
+    }
+
+    @media (max-width: 480px) {
+        .pages-header h1 {
+            font-size: 1.5em;
+        }
+
+        .pages-content h1 {
+            font-size: 1.5em;
+        }
+
+        .pages-content h2 {
+            font-size: 1.4em;
+        }
+
+        .pages-content h3 {
+            font-size: 1.2em;
+        }
+    }
+</style>
+<div class="pages-container">
+    <header class="pages-header">
+        <h1>{{ article.title }}</h1>
+    </header>
+    <div class="pages-content">
+        {{ article.content|safe }} <!-- Use the safe filter to avoid auto escaping -->
+    </div>
+</div>
+{% endblock content %}

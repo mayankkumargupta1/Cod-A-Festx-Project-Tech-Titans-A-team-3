@@ -1,0 +1,156 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            max-width: 600px;
+            /* Increased max-width for more space */
+            width: 100%;
+            padding: 40px;
+            /* Increased padding for better spacing */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            /* Centering items */
+        }
+
+        .logo {
+            max-width: 150px;
+            /* Increased logo size */
+            display: block;
+            margin: 0 auto 30px;
+            /* Increased margin for better spacing */
+        }
+
+        h2 {
+            color: #c11b1b;
+            text-align: center;
+            margin-bottom: 30px;
+            /* Increased margin for better spacing */
+        }
+
+        .error-message {
+            color: #D8000C;
+            background-color: #FFBABA;
+            border: 1px solid #D8000C;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+            margin: 20px 0;
+            width: 100%;
+            text-align: center;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            /* Full width form */
+        }
+
+        form p {
+            margin-bottom: 10px;
+        }
+
+        .form-control {
+            padding: 15px;
+            /* Increased padding for better spacing */
+            margin-bottom: 20px;
+            /* Increased margin for better spacing */
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #c11b1b;
+            box-shadow: 0 0 5px rgba(193, 27, 27, 0.5);
+        }
+
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 10px;
+            /* Increased margin for better spacing */
+        }
+
+        .btn-submit {
+            background-color: #c11b1b;
+            color: white;
+            border: none;
+            padding: 15px;
+            /* Increased padding for better spacing */
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin-top: 20px;
+            /* Margin for better spacing */
+        }
+
+        .btn-submit:hover {
+            background-color: #a31313;
+        }
+
+        .login-link {
+            color: #c11b1b;
+            text-decoration: none;
+            font-weight: bold;
+            display: block;
+            text-align: center;
+            margin-top: 30px;
+            /* Increased margin for better spacing */
+        }
+
+        .login-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <img src="{% static 'logo.png' %}" alt="logo" class="logo">
+        <h2>Register</h2>
+        {% if messages %}
+        {% for message in messages %}
+        
+        {% if message.tags == 'error' %}
+        <div class="error-message">{{ message|safe }}</div>
+        {% endif %}
+        {% endfor %}
+        {% endif %}
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn-submit">SIGN UP</button>
+        </form>
+        <div>
+            <p>Already have an account? <a href="/login" class="login-link">Login</a></p>
+        </div>
+    </div>
+</body>
+
+</html>

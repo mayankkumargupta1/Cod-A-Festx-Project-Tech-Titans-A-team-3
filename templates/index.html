@@ -1,0 +1,301 @@
+{% extends "template.html" %}
+{% load static %}
+
+{% block announcements %}
+<div class="navigation1">
+    <div class="nav">
+        <div class="social-media">
+            {% if SocialMedia_and_HelpLine.facebook %}
+            <a href="{{SocialMedia_and_HelpLine.facebook}}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            {% endif %}
+            {% if SocialMedia_and_HelpLine.twitter %}
+            <a href="{{SocialMedia_and_HelpLine.twitter}}" target="_blank"><i class="fab fa-twitter"></i></a>
+            {% endif %}
+            {% if SocialMedia_and_HelpLine.linkedin %}
+            <a href="{{SocialMedia_and_HelpLine.linkedin}}" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            {% endif %}
+            {% if SocialMedia_and_HelpLine.instagram %}
+            <a href="{{SocialMedia_and_HelpLine.instagram}}" target="_blank"><i class="fab fa-instagram"></i></a>
+            {% endif %}
+            {% if SocialMedia_and_HelpLine.youtube %}
+            <a href="{{SocialMedia_and_HelpLine.youtube}}" target="_blank"><i class="fab fa-youtube"></i></a>
+            {% endif %}
+
+        </div>
+    </div>
+</div>
+<div class="news-container" style="margin-left: 30px;">
+    <div class="ticker">
+        News and Updates
+    </div>
+    <div class="sub">
+        <marquee class="announcements">
+            {% for x in announcement %}
+            {% if x.link %}
+            <a href="{{ x.link }}" class="announcement-item" target="_blank">{{ x.announcement }}</a>
+            {% else %}
+            <a href="#" class="announcement-item">{{ x.announcement }}</a>
+            {% endif %}
+            {% endfor %}
+        </marquee>
+    </div>
+</div>
+<div class="helpline-container">
+    <div class="helpline-text">Helpline No. <i class="fa-solid fa-phone"> </i></div>
+    {% if SocialMedia_and_HelpLine.helpline_no %}
+    <div class="helpline-number">+91 {{ SocialMedia_and_HelpLine.helpline_no }}</div>
+    {% endif %}
+</div>
+</nav>
+</div>
+
+{% endblock announcements %}
+
+
+
+
+
+{% block content %}
+<style>
+    .alert {
+        padding: 20px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+    }
+
+    .alert-info {
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+        text-align: center;
+    }
+</style>
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-info" role="alert">
+    <p style="font-size: larger;">{{ message }}</p>
+</div>
+{% endfor %}
+{% endif %}
+
+
+<div class="home">
+    <!-- fade css -->
+    <div class="content fade" style="display: block;">
+        <div class="txt">
+            <h1>WE FEED POOR PEOPLE, SERVE MEDICAL CARE, VOLUNTEER FOR SOCIETY</h1>
+            <p>We are society driven Foundation build to create impact in the society and help poor people,we donate
+                to poor people.</p>
+        </div>
+        <img src="{% static 'Images/img1.jpg' %}" style="width: 100%; height: 100%;">
+    </div>
+
+    <div class="content fade">
+        <div class="txt">
+            <h1>EMPOWER COMMUNITIES BY PROVIDE EDUCATION FOR UNDERPRIVILEGED CHILDREN</h1>
+            <p>We are continously workjng on generating more donations, which we will use for providing food for
+                people in need, animals medicine etc.</p>
+        </div>
+        <img src="{% static 'Images/img2.jpg' %} " style="width: 100%; height: 100%;">
+    </div>
+
+    <div class="content fade">
+        <div class="txt">
+            <h1>WE RESCUE ANIMALS AND ADVOCATE FOR THEIR WELL-BEING</h1>
+            <p>We rescue abandoned and mistreated animals, provide essential medical care and rehabilitation, and
+                advocate for their well-being, ensuring they find safe, loving homes and a better quality of life.
+            </p>
+        </div>
+        <img src="{% static 'Images/img3.jpg' %} " style="width: 100%; height: 100%;">
+    </div>
+
+    <!-- onclick js -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+    <div class="dotsbox" style="text-align:center">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+    <!-- /onclick js -->
+</div>
+
+<!--------------- Quick Link ----------------------->
+<div class="quick-link">
+    <h1 class="heading">Quick Links</h1>
+    <div class="box-container">
+        <div class="box">
+            <i class="fa-solid fa-people-group"></i>
+            <h3>Become A Volunteer</h3>
+            <p>Join us as a volunteer and give yourself a chance to get blessings.</p>
+            <a href="{% url 'volunteer_panel' %}" class="btn">Join Us</a>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-handshake"></i>
+            <h3>Become A Partner</h3>
+            <p>Become a partner and take responsibility to work for humankind.</p>
+            <a href="{{ data.become_a_partner_link }}" class="btn">Join Us</a>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-hand-holding-dollar"></i>
+            <h3>Donate To Support</h3>
+            <p>Your one donation can feed someone’s daily meal, show some kindness.</p>
+            <a href="{{ data.donate_to_support_link }}" class="btn">Donate Now</a>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-address-card"></i>
+            <h3>Generate ID Card</h3>
+            <p>By joining us, create id card for your identity as a ngo employee.</p>
+            <a href="{% url 'id_card' %}" class="btn">Create</a>
+        </div>
+    </div>
+</div>
+
+<!--------------- About Us ----------------------->
+<div class="about-us">
+    <h3>ABOUT US</h3>
+    <h1>Our Work Promise To Uphold The Trust Placed</h1>
+    <p>Our organization, founded with a deep commitment to serving humanity, strives to make a lasting impact in
+        various sectors, including health, medical care, education, environment, and empowerment of women and youth.
+        We help to poor and needy people's. The emerging India Foundation work without government funding.</p>
+    <div class="about-us-logo"><img src="{% static 'Images/Logo.png' %}"></div>
+    <a href="{{ data.about_us_link}}" class="btn">Learn More</a>
+</div>
+
+<!-------------------------- Goal Part------------------->
+<div class="goals-part">
+    <h1 class="goals-heading">The Emerging India Foundation's Goals</h1>
+    <div class="goals-container">
+        <div class="box">
+            <i class="fa-solid fa-laptop-medical"></i>
+            <h3>Health Empowerment</h3>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-users-line"></i>
+            <h3>Community Development</h3>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-children"></i>
+            <h3>Youth Empowerment</h3>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-hippo"></i>
+            <h3>Animal Welfare</h3>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-seedling"></i>
+            <h3>Environmental Conservation</h3>
+        </div>
+        <div class="box">
+            <i class="fa-solid fa-user-shield"></i>
+            <h3>Human Rights Advocacy</h3>
+        </div>
+    </div>
+    <div class="goals-content">
+        <p class="cont"><b>Health Improvement:</b> Enhancing healthcare access and quality, addressing health issues
+            such as disease prevention, maternal and child health, and mental health support.</p>
+        <p class="cont"><b>Community Development:</b> Supporting community-led initiatives to improve
+            infrastructure, economic opportunities, and social cohesion.</p>
+        <p class="cont"><b>Youth Empowerment:</b> Engaging and empowering young people through education, leadership
+            training, and opportunities for civic engagement.</p>
+        <p class="cont"><b>Animal Welfare:</b> Protecting animal rights, promoting humane treatment, and supporting
+            conservation efforts for endangered species.</p>
+        <p class="cont"><b>Environmental Conservation:</b> Protecting the environment through conservation efforts,
+            sustainable practices, and raising awareness about environmental issues.</p>
+        <p class="cont"><b>Human Rights Advocacy:</b> Promoting and protecting human rights, fighting against
+            discrimination, and ensuring that all individuals have access to basic freedoms and rights.</p>
+    </div>
+</div>
+
+<!------------------------------- counter part ------------------->
+<div class="counter-container">
+    <header class="counter-heading">
+        <h1>IN COLLABORATION WITH PIRAMAL FOUNDATION
+        </h1>
+    </header>
+
+    <div class="counters">
+        <div class="counter-wrapper">
+            <div class="counter-info">
+                <h1 class="counter" data-count="{{data.people_got_clothes}}">0</h1>
+                <p>PEOPLE GOT CLOTHES</p>
+            </div>
+        </div>
+        <div class="counter-wrapper">
+            <div class="counter-info">
+                <h1 class="counter" data-count="{{data.handicaps_got_help}}">0</h1>
+                <p>HANDICAPS GOT HELP</p>
+            </div>
+        </div>
+        <div class="counter-wrapper">
+            <div class="counter-info">
+                <h1 class="counter" data-count="{{data.people_got_medical_help}}">0</h1>
+                <p>PEOPLE GOT MEDICAL HELP</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--------------------- Management Part ------------------>
+<div style="text-align: center; padding: 20px; margin-top: 100px;">
+    <h1 style="color: rgb(193, 27, 27); font-family: 'Poppins', sans-serif; margin-bottom: 30px;">
+        OUR OPTIMISTIC MANAGEMENT TEAM
+    </h1>
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px;">
+        {% for member in Team_members %}
+        <div
+            style="background: #fff; padding: 20px; border: 1px solid #ddd; width: 250px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); border-radius: 10px;">
+            <img src="{{ member.Image.url }}" alt="{{ member.Name }}"
+                style="width: 100%; height: auto; border-radius: 10px 10px 0 0;">
+            <h2 style="color: rgb(193, 27, 27); font-family: 'Montserrat', sans-serif; margin: 15px 0 10px;">
+                {{ member.Name }}
+            </h2>
+            <h4 style="color: #666; font-family: 'Montserrat', sans-serif; margin: 5px 0;">
+                ( {{ member.Position }} )
+            </h4>
+            <h5 style="color: #999; font-family: 'Montserrat', sans-serif; margin: 5px 0;">
+                {{ member.Organization }}
+            </h5>
+        </div>
+        {% endfor %}
+    </div>
+    <div style="margin-top: 30px;">
+        <a href="{% url 'team' %}"
+            style="text-decoration: none; color: #fff; background: rgb(193, 27, 27); padding: 10px 20px; border-radius: 5px; font-family: 'Montserrat', sans-serif;">
+            See Full Management Body
+        </a>
+    </div>
+</div>
+
+
+<!-- -------------------------Slider gallery Part------------------->
+<div style="text-align: center; padding: 20px; margin-top: 100px;">
+    <h2 style="color: rgb(193, 27, 27); font-family: 'Poppins', sans-serif; font-size: 40px;">OUR GALLERY</h2>
+</div>
+<div class="gallery-wrap" style="margin-bottom: 0px;">
+    <img src="{% static 'Images/back.png' %} " id="backBtn">
+    <div class="gallery">
+        <div>
+            {% for image in gallery_3 %}
+            <span><img src="{{image.url}} "></span>
+            {% endfor %}
+        </div>
+        <div>
+            {% for image in gallery_6 %}
+            <span><img src="{{image.url}} "></span>
+            {% endfor %}
+        </div>
+    </div>
+    <img src="{% static 'Images/next.png' %}" id="nextBtn">
+</div>
+<div style="display: flex; justify-content: center; margin-top: 10px; padding: 0px;">
+    <a href="{% url 'gallery:gallery' 'all' %}"
+        style="text-decoration: none; color: #fff; background: rgb(193, 27, 27); padding: 10px 20px; border-radius: 5px; font-family: 'Montserrat', sans-serif; margin-top: 0px;">
+        See Full Gallery
+    </a>
+</div>
+</div>
+{% endblock content %}

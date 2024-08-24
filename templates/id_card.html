@@ -1,0 +1,15 @@
+{% extends "template.html" %}
+
+{% block content %}
+<h1 style="font-family: 'Poppins', sans-serif; color: #4a4a4a; text-align: center; margin-top: 50px;">Your ID card has
+    been generated. Download it</h1>
+
+<form action="" method="post"
+    style="display: flex; justify-content: center; align-items: center; flex-direction: column; margin-top: 30px;">
+    {% csrf_token %}
+    <button type="submit"
+        style="background-color: #4CAF50; color: white; padding: 15px 32px; text-align: center; text-decoration: none; display: inline-block; font-size: 16px; margin: 4px 2px; cursor: pointer; border: none; border-radius: 4px; transition: background-color 0.3s ease;">
+        DOWNLOAD
+    </button>
+</form>
+{% endblock content %}

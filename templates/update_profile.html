@@ -1,0 +1,153 @@
+{% extends "template.html" %}
+
+{% block style %}
+<style>
+    .form {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-group label {
+        font-weight: bold;
+        color: rgb(193, 27, 27);
+        display: block;
+        margin-bottom: 5px;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+    .form-group input[type="file"] {
+        padding: 3px;
+    }
+
+    .btn {
+        display: inline-block;
+        padding: 10px 20px;
+        font-size: 16px;
+        color: #fff;
+        background-color: rgb(193, 27, 27);
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-align: center;
+        transition: background-color 0.3s ease;
+    }
+
+    .btn:hover {
+        background-color: #b71c1c;
+    }
+
+    a {
+        color: rgb(193, 27, 27);
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
+
+    a:hover {
+        text-decoration: underline;
+        color: #b71c1c;
+    }
+
+    fieldset {
+        border: 1px solid rgb(193, 27, 27);
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }
+
+    legend {
+        font-size: 1.5em;
+        color: rgb(193, 27, 27);
+        padding: 0 10px;
+    }
+
+    .alert {
+        padding: 10px;
+        margin-bottom: 20px;
+        border: 1px solid transparent;
+        border-radius: 5px;
+    }
+
+    .alert-info {
+        color: #0c5460;
+        background-color: #d1ecf1;
+        border-color: #bee5eb;
+    }
+
+    @media (max-width: 600px) {
+        form {
+            padding: 15px;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .btn {
+            padding: 10px 15px;
+        }
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+
+
+<div style="margin-top: 20px; margin-bottom: 20px;">
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-info" role="alert">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% if user.username == form.instance.username %}
+    <form class="form" method="post" enctype="multipart/form-data" id="form">
+        {% csrf_token %}
+        <fieldset class="form-group">
+            <legend>Edit Profile Information</legend>
+            <div class="form-group">
+                {{ form.first_name.label_tag }}
+                {{ form.first_name }}
+            </div>
+            <div class="form-group">
+                {{ form.last_name.label_tag }}
+                {{ form.last_name }}
+            </div>
+            <div class="form-group">
+                {{ form.email.label_tag }}
+                {{ form.email }}
+            </div>
+            <div class="form-group">
+                {{ form.profile_picture.label_tag }}
+                {{ form.profile_picture }}
+            </div>
+            <a href="/">Change password?</a>
+        </fieldset>
+
+        <button class="btn" type="submit" id="submit">Update</button>
+
+    </form>
+</div>
+<script>
+    document.getElementById('form').addEventListener('submit', function () {
+        document.getElementById('submit').style.display = 'none';
+    });
+</script>
+{% endif %}
+
+{% endblock content %}

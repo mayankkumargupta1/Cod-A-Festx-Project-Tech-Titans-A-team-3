@@ -1,0 +1,123 @@
+{% extends "template.html" %}
+
+{% block style %}
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f4f4f4;
+        margin: 0;
+        padding: 0;
+    }
+
+    .profile-container {
+        min-height: 65vh;
+        padding: 20px;
+        background-color: #ffffff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        max-width: 800px;
+        margin: 20px auto;
+        box-sizing: border-box;
+    }
+
+    .profile-container legend {
+        font-size: 1.5em;
+        color: rgb(193, 27, 27);
+        margin-bottom: 20px;
+        border-bottom: 2px solid rgb(193, 27, 27);
+        padding-bottom: 10px;
+    }
+
+    .profile-container img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border-radius: 50%;
+        margin-bottom: 20px;
+    }
+
+    .profile-container h2 {
+        font-size: 1.8em;
+        margin: 0;
+        color: rgb(193, 27, 27);
+    }
+
+    .profile-container h2 small {
+        font-size: 0.9em;
+        color: #555;
+    }
+
+    .profile-container p {
+        font-size: 1.1em;
+        margin: 5px 0;
+        color: #333;
+    }
+
+    .edit-link {
+        display: inline-block;
+        margin-top: 20px;
+        padding: 10px 20px;
+        background-color: rgb(193, 27, 27);
+        color: #fff;
+        text-decoration: none;
+        border-radius: 5px;
+        font-size: 1.1em;
+        transition: background-color 0.3s;
+    }
+
+    .edit-link:hover {
+        background-color: rgb(155, 22, 22);
+    }
+</style>
+{% endblock style %}
+
+
+{% block content %}
+<div class="profile-container">
+    <legend>Profile Information:</legend>
+    <div style="display: flex; justify-content: space-around;">
+        <div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="profile-info">
+                    <img src="{{ form.instance.profile_picture.url }}" alt="Profile Picture">
+                    <div class="profile-details">
+                        <h2>{{ form.instance.username }}
+                            <small>({{ form.instance.status }})</small>
+                        </h2>
+                        <p>{{ form.instance.first_name }} {{ form.instance.last_name }}</p>
+                        <p>{{ form.instance.email }}</p>
+                    </div>
+                </div>
+            </form>
+            {% if user.username == form.instance.username %}
+            <a href="{% url 'update_profile' %}" class="edit-link">EDIT DETAILS</a>
+            {% endif %}
+        </div>
+        <div>
+            {% if volunteer %}
+            <p>Volunteer Status :
+                {% if volunteer.status == 'Uploaded' %}
+                <span style="color: red; font-weight: 800;">{{ volunteer.status }}</span>
+                {% else %}
+                <span style="color: green;font-weight: 800;">{{ volunteer.status }}</span>
+                {% endif %}
+            </p>
+            {% endif %}
+            {% if certificates %}
+            <hr>
+            <h3 style="text-align: center; margin-top: 30px;">Certificates</h3>
+            {% for x in certificates %}
+            <div style="display: list-item; align-items: center; justify-content: center; text-align: center;">
+                <p>{{x.Date}}<a style="color: blue; margin-left: 10px; font-size: large;"
+                        href="{% url 'certificates:generate' x.id %}">Download</a></p>
+            </div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+    </div>
+</div>
+
+{% endblock content %}
