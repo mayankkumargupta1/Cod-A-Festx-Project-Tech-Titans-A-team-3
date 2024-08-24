@@ -130,6 +130,8 @@ MIDDLEWARE = [
     'django_otp.middleware.OTPMiddleware',  #django otp middleware
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.middleware.security.SecurityMiddleware', #whitenoise middleware1
+    'whitenoise.middleware.WhiteNoiseMiddleware', #whitenoise middleware2
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -167,7 +169,7 @@ import dj_database_url
 
 DATABASES = {
     'default': dj_database_url.config(
-        default='postgresql://postgres.tqrrtqsrtkqzpzwdymlk:EmergingIndia@1281@aws-0-ap-south-1.pooler.supabase.com:6543/postgres',
+        default=os.getenv('DATABASE_URL'),
         conn_max_age=600,
         ssl_require=True
     )
@@ -311,3 +313,10 @@ SCOPES = ['https://www.googleapis.com/auth/drive']
 PARENT_FOLDER_ID_IMAGES = os.getenv('PARENT_FOLDER_ID_IMAGES')
 PARENT_FOLDER_ID_DOCUMENT =os.getenv('PARENT_FOLDER_ID_DOCUMENT')
 PARENT_FOLDER_ID_GALLERY = os.getenv('PARENT_FOLDER_ID_GALLERY')
+
+# Enable Gzip compression
+WHITENOISE_USE_FINDERS = True
+
+# Enable WhiteNoise's built-in static file compression (for .gzip, .br files)
+WHITENOISE_MANIFEST_STRICT = False
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
