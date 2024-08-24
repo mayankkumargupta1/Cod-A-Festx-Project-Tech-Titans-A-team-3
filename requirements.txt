@@ -20,10 +20,12 @@ google-api-python-client==2.138.0
 google-auth==2.32.0
 google-auth-httplib2==0.2.0
 googleapis-common-protos==1.63.2
+gunicorn==23.0.0
 httplib2==0.22.0
 idna==3.7
 numpy==2.0.1
 openpyxl==3.1.5
+packaging==24.1
 pandas==2.2.2
 Pillow==9.5.0
 proto-plus==1.24.0
@@ -34,6 +36,7 @@ pyasn1_modules==0.4.0
 pyparsing==3.1.2
 pypng==0.20220715.0
 python-dateutil==2.9.0.post0
+python-dotenv==1.0.1
 pytz==2024.1
 qrcode==7.4.2
 razorpay==1.4.2
@@ -46,4 +49,5 @@ typing_extensions==4.12.2
 tzdata==2024.1
 uritemplate==4.1.1
 urllib3==2.2.2
+whitenoise==6.7.0
 XlsxWriter==3.2.0
