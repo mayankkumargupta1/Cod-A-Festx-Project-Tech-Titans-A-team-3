@@ -1,4 +1,5 @@
 import pandas as pd
+from django.shortcuts import render
 from django.http import HttpResponse
 from django.apps import apps
 from users import decorators
@@ -29,3 +30,29 @@ def export_full_database_as_excel(request):
     response['Content-Disposition'] = 'attachment; filename=full_database.xlsx'
     
     return response
+
+
+from Home.models import Navigation_link
+def forms(request):
+    nav_link = Navigation_link.objects.all()
+    form = [
+    'your_problem',
+    'your_suggestion',
+    'doctors_panel',
+    'hospital_panel',
+    'volunteer_panel',
+    'arogya_yojana',
+    'judicial_help_panel',
+    'plantation',
+    'save_water',
+    'arogya_view',
+    'clean_india_view',
+    'rakt_veer_view',
+    'judicial_help_view',
+    'kanya_daan_view'
+    ]
+    context = {
+        'Navigation_link': nav_link,
+        'forms' : form
+    }
+    return render(request, 'forms.html', context = context)

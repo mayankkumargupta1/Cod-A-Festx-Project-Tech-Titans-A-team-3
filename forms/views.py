@@ -574,3 +574,260 @@ def save_water(request):
         'Navigation_link': nav_link,
     }
     return render(request, 'forms/save_water.html', context=context)
+
+
+
+@login_required
+def arogya_view(request):
+    if request.method == 'POST':
+        up_document = request.FILES.get('document')
+        if up_document is not None:
+            up_document = file_url(up_document)
+        
+        up_photo = request.FILES.get('picture')
+        if up_photo is not None:
+            up_photo = image_url(up_photo)
+
+        try:
+            data = arogya_form.objects.filter(user=request.user)
+        except:
+            data = ''
+
+        if len(data) <= 5:
+            form = arogya_form(
+                user=request.user,
+                date_of_help=request.POST['date_of_help'],
+                name_of_patient=request.POST['name_of_patient'],
+                gender=request.POST['gender'],
+                diseases=request.POST['diseases'],
+                address=request.POST['address'],
+                state=request.POST['state'],
+                district=request.POST['district'],
+                block=request.POST['block'],
+                thana=request.POST['thana'],
+                tehsil=request.POST['tehsil'],
+                free_facility=request.POST['free_facility'],
+                falicitator=request.POST['falicitator'],
+                document=up_document,
+                picture=up_photo,
+                status='Uploaded'
+            )
+            form.save()
+            messages.success(request, 'Arogya form submitted successfully.')
+            return redirect('/')
+        else:
+            messages.error(request, 'You have reached the maximum allowed form submission limit of 5.')
+            return redirect('/')
+
+    nav_link = Navigation_link.objects.all()
+    context = {
+        'Navigation_link': nav_link,
+    }
+    return render(request, 'forms/arogya_form.html', context=context)
+
+@login_required
+def clean_india_view(request):
+    if request.method == 'POST':
+        up_document = request.FILES.get('document')
+        if up_document is not None:
+            up_document = file_url(up_document)
+        
+        up_photo = request.FILES.get('picture')
+        if up_photo is not None:
+            up_photo = image_url(up_photo)
+
+        try:
+            data = Clean_India_form.objects.filter(user=request.user)
+        except:
+            data = ''
+
+        if len(data) <= 5:
+            form = Clean_India_form(
+                user=request.user,
+                date_of_complain=request.POST['date_of_complain'],
+                complainers=request.POST['complainers'],
+                mobile_number=request.POST['mobile_number'],
+                whatsapp=request.POST['whatsapp'],
+                address=request.POST['address'],
+                date_of_work=request.POST['date_of_work'],
+                date_of_report=request.POST['date_of_report'],
+                working_organization=request.POST['working_organization'],
+                state=request.POST['state'],
+                district=request.POST['district'],
+                block=request.POST['block'],
+                thana=request.POST['thana'],
+                tehsil=request.POST['tehsil'],
+                document=up_document,
+                picture=up_photo,
+                status='Uploaded'
+            )
+            form.save()
+            messages.success(request, 'Clean India form submitted successfully.')
+            return redirect('/')
+        else:
+            messages.error(request, 'You have reached the maximum allowed form submission limit of 5.')
+            return redirect('/')
+
+    nav_link = Navigation_link.objects.all()
+    context = {
+        'Navigation_link': nav_link,
+    }
+    return render(request, 'forms/clean_india_form.html', context=context)
+
+
+@login_required
+def rakt_veer_view(request):
+    if request.method == 'POST':
+        up_document = request.FILES.get('document')
+        if up_document is not None:
+            up_document = file_url(up_document)
+        
+        up_photo = request.FILES.get('picture')
+        if up_photo is not None:
+            up_photo = image_url(up_photo)
+
+        try:
+            data = Rakt_veer_form.objects.filter(user=request.user)
+        except:
+            data = ''
+
+        if len(data) <= 5:
+            form = Rakt_veer_form(
+                user=request.user,
+                name_of_donor=request.POST['name_of_donor'],
+                age=request.POST['age'],
+                gender=request.POST['gender'],
+                mobile_number=request.POST['mobile_number'],
+                blood_group=request.POST['blood_group'],
+                date_of_donation=request.POST['date_of_donation'],
+                state=request.POST['state'],
+                district=request.POST['district'],
+                block=request.POST['block'],
+                thana=request.POST['thana'],
+                tehsil=request.POST['tehsil'],
+                name_of_hospital=request.POST['name_of_hospital'],
+                address_of_hospital=request.POST['address_of_hospital'],
+                Rstate=request.POST['Rstate'],
+                Rdistrict=request.POST['Rdistrict'],
+                Rblock=request.POST['Rblock'],
+                Rthana=request.POST['Rthana'],
+                Rtehsil=request.POST['Rtehsil'],
+                Rmobile_number=request.POST['Rmobile_number'],
+                name_of_patient=request.POST['name_of_patient'],
+                Rblood_group=request.POST['Rblood_group'],
+                document=up_document,
+                picture=up_photo,
+                status='Uploaded'
+            )
+            form.save()
+            messages.success(request, 'Rakt Veer form submitted successfully.')
+            return redirect('/')
+        else:
+            messages.error(request, 'You have reached the maximum allowed form submission limit of 5.')
+            return redirect('/')
+
+    nav_link = Navigation_link.objects.all()
+    context = {
+        'Navigation_link': nav_link,
+    }
+    return render(request, 'forms/rakt_veer_form.html', context=context)
+
+@login_required
+def judicial_help_view(request):
+    if request.method == 'POST':
+        up_document = request.FILES.get('document')
+        if up_document is not None:
+            up_document = file_url(up_document)
+        
+        up_photo = request.FILES.get('picture')
+        if up_photo is not None:
+            up_photo = image_url(up_photo)
+
+        try:
+            data = judicial_help_form.objects.filter(user=request.user)
+        except:
+            data = ''
+
+        if len(data) <= 5:
+            form = judicial_help_form(
+                user=request.user,
+                name=request.POST['name'],
+                age=request.POST['age'],
+                address=request.POST['address'],
+                gender=request.POST['gender'],
+                state=request.POST['state'],
+                district=request.POST['district'],
+                block=request.POST['block'],
+                thana=request.POST['thana'],
+                tehsil=request.POST['tehsil'],
+                name_of_court=request.POST['name_of_court'],
+                district_of_court=request.POST['district_of_court'],
+                name_of_advocate=request.POST['name_of_advocate'],
+                document=up_document,
+                picture=up_photo,
+                status='Uploaded'
+            )
+            form.save()
+            messages.success(request, 'Judicial help form submitted successfully.')
+            return redirect('/')
+        else:
+            messages.error(request, 'You have reached the maximum allowed form submission limit of 5.')
+            return redirect('/')
+
+    nav_link = Navigation_link.objects.all()
+    context = {
+        'Navigation_link': nav_link,
+    }
+    return render(request, 'forms/judicial_help_form.html', context=context)
+
+@login_required
+def kanya_daan_view(request):
+    if request.method == 'POST':
+        up_document = request.FILES.get('document')
+        if up_document is not None:
+            up_document = file_url(up_document)
+        
+        up_photo = request.FILES.get('picture')
+        if up_photo is not None:
+            up_photo = image_url(up_photo)
+
+        try:
+            data = kanya_daan_form.objects.filter(user=request.user)
+        except:
+            data = ''
+
+        if len(data) <= 5:
+            form = kanya_daan_form(
+                user=request.user,
+                name_of_beneficiary=request.POST['name_of_beneficiary'],
+                gender=request.POST['gender'],
+                DOB=request.POST['DOB'],
+                Fathers_name=request.POST['Fathers_name'],
+                address=request.POST['address'],
+                Date_of_marriage=request.POST['Date_of_marriage'],
+                mobile_number=request.POST['mobile_number'],
+                whatsapp=request.POST['whatsapp'],
+                help_by=request.POST['help_by'],
+                adhar_no=request.POST['adhar_no'],
+                state=request.POST['state'],
+                district=request.POST['district'],
+                block=request.POST['block'],
+                thana=request.POST['thana'],
+                tehsil=request.POST['tehsil'],
+                document=up_document,
+                picture=up_photo,
+                status='Uploaded'
+            )
+            form.save()
+            messages.success(request, 'Kanya Daan form submitted successfully.')
+            return redirect('/')
+        else:
+            messages.error(request, 'You have reached the maximum allowed form submission limit of 5.')
+            return redirect('/')
+
+    nav_link = Navigation_link.objects.all()
+    context = {
+        'Navigation_link': nav_link,
+    }
+    return render(request, 'forms/kanya_daan_form.html', context=context)
+

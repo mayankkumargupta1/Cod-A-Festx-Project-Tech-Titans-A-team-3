@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
+# from dotenv import load_dotenv
+
+# # Load .env file
+# load_dotenv()
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -283,8 +288,8 @@ CKEDITOR_CONFIGS = {
 }
 
 # Razorpay integration
-RAZORPAY_API_KEY = 'rzp_live_Hb7aTS9SH5kHYo'
-RAZORPAY_API_SECRET = '7tPtm0PwV0Ezj7NuyOcuvCfo'
+RAZORPAY_API_KEY = os.getenv('RAZORPAY_API_KEY')
+RAZORPAY_API_SECRET = os.getenv('RAZORPAY_API_SECRET')
 
 
 # google email config

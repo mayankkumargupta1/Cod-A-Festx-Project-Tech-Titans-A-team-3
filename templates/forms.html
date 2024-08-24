@@ -1,0 +1,51 @@
+{% extends "template.html" %}
+
+{% block tile %}
+Emerging India Forms
+{% endblock tile %}
+
+{% block style %}
+<!-- Inline CSS for styling -->
+<style>
+    .form-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;  /* Center the items horizontally */
+        justify-content: center;  /* Center the items vertically */
+        margin: 20px auto;  /* Center the container in the middle of the page */
+        padding: 20px;
+        border: 1px solid #c11b1b;
+        border-radius: 8px;
+        background-color: #fff5f5;
+        max-width: 600px;  /* Set maximum width for the container */
+    }
+
+    .form-container a {
+        display: block;
+        padding: 10px 15px;
+        margin: 5px 0;
+        color: #c11b1b;
+        text-decoration: none;
+        border: 1px solid #c11b1b;
+        border-radius: 5px;
+        background-color: #ffffff;
+        text-align: center;
+        font-weight: bold;
+        font-family: 'Poppins', sans-serif;
+        width: 100%;  /* Make links fill the container */
+    }
+
+    .form-container a:hover {
+        background-color: #c11b1b;
+        color: #ffffff;
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+<div class="form-container">
+    {% for x in forms %}
+    <a href="{% url x %}">{{ x }}</a>
+    {% endfor %}
+</div>
+{% endblock content %}

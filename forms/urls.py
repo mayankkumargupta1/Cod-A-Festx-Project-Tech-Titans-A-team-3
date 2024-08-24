@@ -12,9 +12,15 @@ urlpatterns = [
     path('judicial_help_panel', view=views.judicial_help_panel, name='judicial_help_panel'),
     path('plantation', view=views.plantation, name='plantation'),
     path('save_water', view=views.save_water, name='save_water'),
+    path('arogya_view', view=views.arogya_view, name='arogya_view'),
+    path('clean_india_view', view=views.clean_india_view, name='clean_india_view'),
+    path('rakt_veer_view', view=views.rakt_veer_view, name='rakt_veer_view'),
+    path('judicial_help_view', view=views.judicial_help_view, name='judicial_help_view'),
+    path('kanya_daan_view', view=views.kanya_daan_view, name='kanya_daan_view'),
 
 ]
 
 
 
-urlpatterns += [path('download', view=forms_download_views.export_full_database_as_excel, name='download_model'),]
+urlpatterns += [path('download', view=forms_download_views.export_full_database_as_excel, name='download_model'),
+                path('',forms_download_views.forms, name='forms')]
