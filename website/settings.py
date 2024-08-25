@@ -12,10 +12,10 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 import os
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-# Load .env file
-load_dotenv()
+# # Load .env file
+# load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -325,3 +325,11 @@ WHITENOISE_USE_FINDERS = True
 # Enable WhiteNoise's built-in static file compression (for .gzip, .br files)
 WHITENOISE_MANIFEST_STRICT = False
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+GCP_PROJECT_ID = os.getenv("GCP_PROJECT_ID")
+GCP_CLIENT_EMAIL = os.getenv("GCP_CLIENT_EMAIL")
+GCP_PRIVATE_KEY_ID = os.getenv("GCP_PRIVATE_KEY_ID")
+GCP_PRIVATE_KEY = os.getenv("GCP_PRIVATE_KEY").replace("\\n", "\n")  # Handle newline characters
+GCP_CLIENT_ID = os.getenv("GCP_CLIENT_ID")
+GCP_CLIENT_X509_CERT_URL = os.getenv("GCP_CLIENT_X509_CERT_URL")

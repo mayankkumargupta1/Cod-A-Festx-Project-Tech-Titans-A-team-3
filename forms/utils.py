@@ -9,11 +9,18 @@ from googleapiclient.http import MediaFileUpload
 import os
 from django.contrib.staticfiles.storage import staticfiles_storage
 from website.settings import *
+import json
 
-SERVICE_ACCOUNT_FILE = staticfiles_storage.path('service.json')
 
 def authenticate():
-    creds = service_account.Credentials.from_service_account_file(SERVICE_ACCOUNT_FILE, scopes=SCOPES)
+    # Load the private key from the environment variable
+    private_key = os.getenv('GCP_PRIVATE_KEY')
+
+    # Convert the string to a dictionary
+    credentials_info = json.loads(private_key)
+
+    # Create credentials using the service account info
+    creds = service_account.Credentials.from_service_account_info(credentials_info)
     return creds
 
 def upload_photo(file_path):
