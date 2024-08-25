@@ -1,0 +1,139 @@
+{% extends "template.html" %}
+
+{% block title %}
+Employment Generation Form
+{% endblock title %}
+
+{% block style %}
+<style>
+    body.employment_generation_form_body {
+        font-family: 'Poppins', sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 0;
+    }
+
+    h1.employment_generation_form_h1 {
+        color: rgb(193, 27, 27);
+        text-align: center;
+        margin-top: 20px;
+    }
+
+    form.employment_generation_form {
+        max-width: 600px;
+        margin: 20px auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    label.employment_generation_form_label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+        color: #333;
+    }
+
+    input.employment_generation_form_input,
+    select.employment_generation_form_select,
+    textarea.employment_generation_form_textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    input.employment_generation_form_input:focus,
+    select.employment_generation_form_select:focus,
+    textarea.employment_generation_form_textarea:focus {
+        border-color: rgb(193, 27, 27);
+        outline: none;
+        box-shadow: 0 0 5px rgba(193, 27, 27, 0.5);
+    }
+
+    button.employment_generation_form_button {
+        width: 100%;
+        padding: 10px;
+        background-color: rgb(193, 27, 27);
+        border: none;
+        border-radius: 5px;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+    }
+
+    button.employment_generation_form_button:hover {
+        background-color: #a31919;
+    }
+
+    @media (max-width: 600px) {
+        form.employment_generation_form {
+            padding: 10px;
+        }
+    }
+</style>
+{% endblock style %}
+
+{% block content %}
+{% if messages %}
+{% for message in messages %}
+<p{% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</p>
+    {% endfor %}
+    {% endif %}
+
+    <h1 class="employment_generation_form_h1">Employment Generation Form</h1>
+    <form method="post" enctype="multipart/form-data" class="employment_generation_form"
+        id="employment_generation_form">
+        {% csrf_token %}
+
+        <label for="name_of_beneficiery" class="employment_generation_form_label">Name of Beneficiary:</label>
+        <input type="text" id="name_of_beneficiery" name="name_of_beneficiery" class="employment_generation_form_input"
+            required>
+
+        <label for="age" class="employment_generation_form_label">Age:</label>
+        <input type="number" id="age" name="age" class="employment_generation_form_input" required>
+
+        <label for="DOB" class="employment_generation_form_label">Date of Birth:</label>
+        <input type="date" id="DOB" name="DOB" class="employment_generation_form_input" required>
+
+        <label for="qualification" class="employment_generation_form_label">Qualification:</label>
+        <input type="text" id="qualification" name="qualification" class="employment_generation_form_input" required>
+
+        <label for="fathers_name" class="employment_generation_form_label">Father's Name:</label>
+        <input type="text" id="fathers_name" name="fathers_name" class="employment_generation_form_input" required>
+
+        <label for="address" class="employment_generation_form_label">Address:</label>
+        <textarea id="address" name="address" class="employment_generation_form_textarea" required></textarea>
+
+        <label for="work_place" class="employment_generation_form_label">Work Place:</label>
+        <input type="text" id="work_place" name="work_place" class="employment_generation_form_input" required>
+
+        <label for="type_of_work" class="employment_generation_form_label">Type of Work:</label>
+        <input type="text" id="type_of_work" name="type_of_work" class="employment_generation_form_input" required>
+
+        <label for="mobile_number" class="employment_generation_form_label">Mobile Number:</label>
+        <input type="tel" id="mobile_number" name="mobile_number" class="employment_generation_form_input" required>
+
+        <label for="whatsapp" class="employment_generation_form_label">WhatsApp Number:</label>
+        <input type="tel" id="whatsapp" name="whatsapp" class="employment_generation_form_input" required>
+
+        <label for="salary_income" class="employment_generation_form_label">Salary/Income:</label>
+        <input type="number" id="salary_income" name="salary_income" class="employment_generation_form_input" required>
+
+        <label for="document" class="employment_generation_form_label">Document:</label>
+        <input type="file" id="document" name="document" class="employment_generation_form_input">
+
+        <label for="picture" class="employment_generation_form_label">Picture:</label>
+        <input type="file" id="picture" name="picture" class="employment_generation_form_input">
+
+        <button type="submit" id="submit" class="employment_generation_form_button">Submit</button>
+    </form>
+
+    <script>
+        document.getElementById('employment_generation_form').addEventListener('submit', function () {
+            document.getElementById('submit').style.display = 'none';
+        });
+    </script>
+    {% endblock content %}

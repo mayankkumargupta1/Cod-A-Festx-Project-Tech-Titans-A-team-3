@@ -49,7 +49,11 @@ def forms(request):
     'clean_india_view',
     'rakt_veer_view',
     'judicial_help_view',
-    'kanya_daan_view'
+    'kanya_daan_view',
+    'shiksha_sankalp_view',
+    'employment_generation_view',
+    'road_safety_view',
+    'cancer_awareness_view'
     ]
     context = {
         'Navigation_link': nav_link,

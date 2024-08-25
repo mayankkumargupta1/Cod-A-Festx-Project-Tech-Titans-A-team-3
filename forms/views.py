@@ -831,3 +831,195 @@ def kanya_daan_view(request):
     }
     return render(request, 'forms/kanya_daan_form.html', context=context)
 
+
+@login_required
+def shiksha_sankalp_view(request):
+    if request.method == 'POST':
+        up_document = request.FILES.get('document')
+        if up_document is not None:
+            up_document = file_url(up_document)
+        
+        up_photo = request.FILES.get('picture')
+        if up_photo is not None:
+            up_photo = image_url(up_photo)
+
+        try:
+            data = shiksha_sankalp_form.objects.filter(user=request.user)
+        except:
+            data = ''
+
+        if len(data) <= 5:
+            form = shiksha_sankalp_form(
+                user=request.user,
+                name_of_student_or_school=request.POST['name_of_student_or_school'],
+                address=request.POST['address'],
+                class_of_student=request.POST['class_of_student'],
+                state=request.POST['state'],
+                district=request.POST['district'],
+                block=request.POST['block'],
+                thana=request.POST['thana'],
+                tehsil=request.POST['tehsil'],
+                mobile_number=request.POST['mobile_number'],
+                whatsapp=request.POST['whatsapp'],
+                donated_item=request.POST['donated_item'],
+                total_no_of_beneficiery=request.POST['total_no_of_beneficiery'],
+                document=up_document,
+                picture=up_photo,
+                status='Uploaded'
+            )
+            form.save()
+            messages.success(request, 'Shiksha Sankalp form submitted successfully.')
+            return redirect('/')
+        else:
+            messages.error(request, 'You have reached the maximum allowed form submission limit of 5.')
+            return redirect('/')
+
+    nav_link = Navigation_link.objects.all()
+    context = {
+        'Navigation_link': nav_link,
+    }
+    return render(request, 'forms/shiksha_sankalp_form.html', context=context)
+
+
+@login_required
+def employment_generation_view(request):
+    if request.method == 'POST':
+        up_document = request.FILES.get('document')
+        if up_document is not None:
+            up_document = file_url(up_document)
+        
+        up_photo = request.FILES.get('picture')
+        if up_photo is not None:
+            up_photo = image_url(up_photo)
+
+        try:
+            data = Employment_generation_form.objects.filter(user=request.user)
+        except:
+            data = ''
+
+        if len(data) <= 5:
+            form = Employment_generation_form(
+                user=request.user,
+                name_of_beneficiery=request.POST['name_of_beneficiery'],
+                age=request.POST['age'],
+                DOB=request.POST['DOB'],
+                qualification=request.POST['qualification'],
+                fathers_name=request.POST['fathers_name'],
+                address=request.POST['address'],
+                work_place=request.POST['work_place'],
+                type_of_work=request.POST['type_of_work'],
+                mobile_number=request.POST['mobile_number'],
+                whatsapp=request.POST['whatsapp'],
+                salary_income=request.POST['salary_income'],
+                document=up_document,
+                picture=up_photo,
+                status='Uploaded'
+            )
+            form.save()
+            messages.success(request, 'Employment Generation form submitted successfully.')
+            return redirect('/')
+        else:
+            messages.error(request, 'You have reached the maximum allowed form submission limit of 5.')
+            return redirect('/')
+
+    nav_link = Navigation_link.objects.all()
+    context = {
+        'Navigation_link': nav_link,
+    }
+    return render(request, 'forms/employment_generation_form.html', context=context)
+
+
+@login_required
+def road_safety_view(request):
+    if request.method == 'POST':
+        up_document = request.FILES.get('document')
+        if up_document is not None:
+            up_document = file_url(up_document)
+        
+        up_photo = request.FILES.get('picture')
+        if up_photo is not None:
+            up_photo = image_url(up_photo)
+
+        try:
+            data = Road_safety_awareness_form.objects.filter(user=request.user)
+        except:
+            data = ''
+
+        if len(data) <= 5:
+            form = Road_safety_awareness_form(
+                user=request.user,
+                date_of_awarness=request.POST['date_of_awarness'],
+                name_of_organizer=request.POST['name_of_organizer'],
+                address=request.POST['address'],
+                name_of_school_or_student=request.POST['name_of_school_or_student'],
+                people_participated=request.POST['people_participated'],
+                state=request.POST['state'],
+                district=request.POST['district'],
+                block=request.POST['block'],
+                thana=request.POST['thana'],
+                tehsil=request.POST['tehsil'],
+                mobile_number=request.POST['mobile_number'],
+                document=up_document,
+                picture=up_photo,
+                status='Uploaded'
+            )
+            form.save()
+            messages.success(request, 'Road Safety Awareness form submitted successfully.')
+            return redirect('/')
+        else:
+            messages.error(request, 'You have reached the maximum allowed form submission limit of 5.')
+            return redirect('/')
+
+    nav_link = Navigation_link.objects.all()
+    context = {
+        'Navigation_link': nav_link,
+    }
+    return render(request, 'forms/road_safety_form.html', context=context)
+
+
+@login_required
+def cancer_awareness_view(request):
+    if request.method == 'POST':
+        up_document = request.FILES.get('document')
+        if up_document is not None:
+            up_document = file_url(up_document)
+        
+        up_photo = request.FILES.get('picture')
+        if up_photo is not None:
+            up_photo = image_url(up_photo)
+
+        try:
+            data = Cancer_awareness_form.objects.filter(user=request.user)
+        except:
+            data = ''
+
+        if len(data) <= 5:
+            form = Cancer_awareness_form(
+                user=request.user,
+                date_of_awarness=request.POST['date_of_awarness'],
+                name_of_organizer=request.POST['name_of_organizer'],
+                address=request.POST['address'],
+                name_of_school_or_student=request.POST['name_of_school_or_student'],
+                people_participated=request.POST['people_participated'],
+                state=request.POST['state'],
+                district=request.POST['district'],
+                block=request.POST['block'],
+                thana=request.POST['thana'],
+                tehsil=request.POST['tehsil'],
+                mobile_number=request.POST['mobile_number'],
+                document=up_document,
+                picture=up_photo,
+                status='Uploaded'
+            )
+            form.save()
+            messages.success(request, 'Cancer Awareness form submitted successfully.')
+            return redirect('/')
+        else:
+            messages.error(request, 'You have reached the maximum allowed form submission limit of 5.')
+            return redirect('/')
+
+    nav_link = Navigation_link.objects.all()
+    context = {
+        'Navigation_link': nav_link,
+    }
+    return render(request, 'forms/cancer_awareness_form.html', context=context)

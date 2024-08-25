@@ -17,7 +17,10 @@ urlpatterns = [
     path('rakt_veer_view', view=views.rakt_veer_view, name='rakt_veer_view'),
     path('judicial_help_view', view=views.judicial_help_view, name='judicial_help_view'),
     path('kanya_daan_view', view=views.kanya_daan_view, name='kanya_daan_view'),
-
+    path('shiksha_sankalp_view', view=views.shiksha_sankalp_view, name='shiksha_sankalp_view'),
+    path('employment_generation_view', view=views.employment_generation_view, name='employment_generation_view'),
+    path('road_safety_view', view=views.road_safety_view, name='road_safety_view'),
+    path('cancer_awareness_view', view=views.cancer_awareness_view, name='cancer_awareness_view')
 ]
 
 
