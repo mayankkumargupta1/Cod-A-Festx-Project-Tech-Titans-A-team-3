@@ -16,116 +16,179 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
+            /* Use full viewport height */
         }
 
         .container {
             background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            max-width: 600px;
-            /* Increased max-width for more space */
+            border-radius: 0.25rem;
+            /* Smaller rounded corners */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            /* Full width on mobile */
             width: 100%;
-            padding: 40px;
-            /* Increased padding for better spacing */
+            padding: 1rem;
+            /* Reduced padding */
             display: flex;
             flex-direction: column;
             align-items: center;
-            /* Centering items */
+            /* Center items */
+            height: auto;
+            /* Allow auto height for compactness */
+            max-height: 80%;
+            /* Set maximum height */
+            overflow: auto;
+            /* Allow scrolling if content overflows */
         }
 
         .logo {
-            max-width: 150px;
-            /* Increased logo size */
-            display: block;
-            margin: 0 auto 30px;
-            /* Increased margin for better spacing */
+            max-width: 80px;
+            /* Smaller logo size */
+            height: auto;
+            /* Maintain aspect ratio */
+            margin-bottom: 0.5rem;
+            /* Reduced space below logo */
         }
 
         h2 {
             color: #c11b1b;
+            /* Title color */
             text-align: center;
-            margin-bottom: 30px;
-            /* Increased margin for better spacing */
+            margin: 0.5rem 0;
+            /* Reduced space above and below */
+            font-size: 1.25rem;
+            /* Reduced font size */
         }
 
         .error-message {
             color: #D8000C;
+            /* Error text color */
             background-color: #FFBABA;
+            /* Error background color */
             border: 1px solid #D8000C;
-            padding: 10px;
-            border-radius: 5px;
-            font-family: Arial, sans-serif;
-            font-size: 14px;
-            margin: 20px 0;
+            /* Error border color */
+            padding: 0.25rem;
+            /* Reduced padding for error message */
+            border-radius: 0.25rem;
+            /* Smaller rounded corners */
+            font-size: 0.75rem;
+            /* Smaller font size */
+            margin: 0.5rem 0;
+            /* Reduced space above and below */
             width: 100%;
+            /* Full width */
             text-align: center;
         }
 
         form {
             display: flex;
             flex-direction: column;
+            /* Stack form elements */
             width: 100%;
-            /* Full width form */
-        }
-
-        form p {
-            margin-bottom: 10px;
+            /* Full width */
+            align-items: center;
+            /* Center align items */
         }
 
         .form-control {
-            padding: 15px;
-            /* Increased padding for better spacing */
-            margin-bottom: 20px;
-            /* Increased margin for better spacing */
-            border-radius: 5px;
+            padding: 0.5rem;
+            /* Reduced padding for input */
+            margin-bottom: 0.5rem;
+            /* Reduced space below input */
+            border-radius: 0.25rem;
+            /* Smaller rounded corners */
             border: 1px solid #ccc;
+            /* Border color */
             width: 100%;
+            /* Full width */
             box-sizing: border-box;
+            /* Include padding in width */
         }
 
         .form-control:focus {
             outline: none;
+            /* No outline */
             border-color: #023d7c;
+            /* Border color on focus */
             box-shadow: 0 0 5px rgba(193, 27, 27, 0.5);
+            /* Shadow on focus */
         }
 
         .form-label {
             font-weight: bold;
-            margin-bottom: 10px;
-            /* Increased margin for better spacing */
+            /* Bold labels */
+            margin-bottom: 0.25rem;
+            /* Reduced space below label */
         }
 
         .btn-submit {
             background-color: #023d7c;
+            /* Button background color */
             color: white;
+            /* Button text color */
             border: none;
-            padding: 15px;
-            /* Increased padding for better spacing */
-            border-radius: 5px;
+            /* No border */
+            padding: 0.5rem;
+            /* Reduced padding for button */
+            border-radius: 0.25rem;
+            /* Smaller rounded corners */
             cursor: pointer;
-            font-size: 16px;
+            /* Pointer cursor */
+            font-size: 0.875rem;
+            /* Smaller font size */
             transition: background-color 0.3s;
-            margin-top: 20px;
-            /* Margin for better spacing */
+            /* Transition for hover effect */
+            margin-top: 0.5rem;
+            /* Reduced space above button */
+            width: 100%;
+            /* Full width */
         }
 
         .btn-submit:hover {
-            background-color: #023d7c;
+            background-color: #022a5b;
+            /* Darker shade on hover */
         }
 
         .login-link {
             color: #023d7c;
+            /* Link color */
             text-decoration: none;
+            /* No underline */
             font-weight: bold;
-            display: block;
+            /* Bold link */
             text-align: center;
-            margin-top: 30px;
-            /* Increased margin for better spacing */
+            /* Center align */
+            margin-top: 0.5rem;
+            /* Reduced space above link */
+            font-size: 0.875rem;
+            /* Smaller font size */
         }
 
         .login-link:hover {
             text-decoration: underline;
+            /* Underline on hover */
+        }
+
+        /* Media Queries for larger screens */
+        @media (min-width: 600px) {
+            .container {
+                max-width: 400px;
+                /* Set max width for larger screens */
+                padding: 1.5rem;
+                /* More padding for larger screens */
+            }
+
+            .logo {
+                max-width: 120px;
+                /* Logo size for larger screens */
+            }
+
+            h2,
+            .error-message,
+            .btn-submit {
+                margin: 0.75rem 0;
+                /* Adjust margins for larger screens */
+            }
         }
     </style>
 </head>
@@ -136,7 +199,6 @@
         <h2>Register</h2>
         {% if messages %}
         {% for message in messages %}
-
         {% if message.tags == 'error' %}
         <div class="error-message">{{ message|safe }}</div>
         {% endif %}
