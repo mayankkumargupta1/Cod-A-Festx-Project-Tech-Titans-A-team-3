@@ -86,7 +86,7 @@
 
         .form-control:focus {
             outline: none;
-            border-color: #c11b1b;
+            border-color: #023d7c;
             box-shadow: 0 0 5px rgba(193, 27, 27, 0.5);
         }
 
@@ -97,7 +97,7 @@
         }
 
         .btn-submit {
-            background-color: #c11b1b;
+            background-color: #023d7c;
             color: white;
             border: none;
             padding: 15px;
@@ -111,11 +111,11 @@
         }
 
         .btn-submit:hover {
-            background-color: #a31313;
+            background-color: #023d7c;
         }
 
         .login-link {
-            color: #c11b1b;
+            color: #023d7c;
             text-decoration: none;
             font-weight: bold;
             display: block;
@@ -132,11 +132,11 @@
 
 <body>
     <div class="container">
-        <img src="{% static 'logo.png' %}" alt="logo" class="logo">
+        <img src="{% static 'Logo.jpeg' %}" alt="logo" class="logo">
         <h2>Register</h2>
         {% if messages %}
         {% for message in messages %}
-        
+
         {% if message.tags == 'error' %}
         <div class="error-message">{{ message|safe }}</div>
         {% endif %}

@@ -1,0 +1,48 @@
+{% extends "template.html" %}
+
+{% block content %}
+<div
+    style="max-width: 600px; margin: 50px auto; padding: 20px; background: #fff; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); border-radius: 10px;">
+    <h1 style="text-align: center; font-size: 2.5rem; color: #2c3e50; margin-bottom: 20px;">Your Online Jr Doctor</h1>
+
+    <form method="POST" style="display: flex; flex-direction: column; gap: 20px;">
+        {% csrf_token %}
+        <div style="display: flex; flex-direction: column;">
+            <label style="font-size: 1.1rem; color: #2c3e50; margin-bottom: 10px;">{{ form.prompt.label }}</label>
+            {{ form.prompt }}
+        </div>
+        <button type="submit"
+            style="padding: 10px 15px; background-color: #3498db; color: white; font-size: 1.1rem; border: none; border-radius: 5px; cursor: pointer; transition: background-color 0.3s ease;">
+            Ask E-Doctor
+        </button>
+    </form>
+
+    {% if generated_text %}
+    <hr style="margin: 30px 0; border: none; border-top: 2px solid #eee;">
+    <h3 style="font-size: 1.8rem; color: #2c3e50;">Doctor Says:</h3>
+    <p style="font-size: 1.1rem; line-height: 1.6; color: #34495e;">{{ generated_text|safe }}</p>
+    {% endif %}
+</div>
+
+<style>
+    input[type="text"],
+    textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+        color: #34495e;
+        background-color: #f4f7fc;
+        box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    input[type="text"]:focus,
+    textarea:focus {
+        border-color: #3498db;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        outline: none;
+    }
+</style>
+{% endblock content %}

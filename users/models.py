@@ -12,14 +12,16 @@ def validate_image_size(image):
 class User(AbstractUser):
     user_id = models.UUIDField(default=uuid.uuid4, editable=False)
     STATUS = (
-        ('Regular', 'Regular'),
+        ('Patient', 'Patient'),
         ('Subscriber', 'Subscriber'),
         ('Moderator', 'Moderator')
     )
     email = models.EmailField(unique=True)
-    status = models.CharField(max_length=200, choices=STATUS, default='Regular')
-
-
+    status = models.CharField(max_length=200, choices=STATUS, default='Patient')
+    blood_group = models.CharField(max_length=3, default='', blank=True, null=True)
+    age = models.IntegerField(null=True, blank=True)
+    Gender = (('Male','Male'), ('Female','Female'), ('Other', 'Other'))
+    gender = models.CharField(default='other', blank=True, null=True, choices=Gender, max_length=30)
     # Profile Picture
     profile_picture = models.ImageField(default='profile/default.png', upload_to='profile/',validators=[validate_image_size])
     _original_profile_picture = None

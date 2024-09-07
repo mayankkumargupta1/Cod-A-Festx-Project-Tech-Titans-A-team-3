@@ -16,6 +16,7 @@
     <!-- Main CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- imported fonts -->
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
@@ -45,7 +46,7 @@
             display: flex;
             overflow-x: auto;
             white-space: nowrap;
-            background-color: rgb(193, 27, 27);
+            background-color: #023d7c;
             padding: 10px;
             -webkit-overflow-scrolling: touch;
             /* for smooth scrolling */
@@ -108,9 +109,9 @@
     <!-- Header Part -->
     <header>
         <div class="main">
-            <div class="logo"><img src=" {% static 'Images/Logo.png' %} " alt="logo"></div>
+            <div class="logo"><img src=" {% static 'Logo.jpeg' %} " alt="logo"></div>
             <div>
-                <h1 class="name">The Emerging India Foundation</h1>
+                <h1 class="name" style="font-size: 80px;">Nirogi Janta</h1>
                 <h3><span class="multiple-text"></span></h3>
             </div>
             <div>
@@ -118,7 +119,7 @@
 
                 <form method="post" action="{% url 'logout' %}">
                     <a href="{% url 'profile' user.username %}" style="display: inline-block;
-                    background-color: rgb(193, 27, 27);
+                    background-color: #0F9D58;
                     color: white;
                     text-align: center;
                     padding: 14px;
@@ -133,7 +134,7 @@
                 </form>
                 {% else %}
                 <a href="{% url 'login' %}" style="display: inline-block;
-                background-color: rgb(193, 27, 27);
+                background-color: #0F9D58;
                 color: white;
                 text-align: center;
                 padding: 14px;
@@ -144,7 +145,7 @@
                 border-radius: 5px;
                 margin: 0;">Login</a>
                 <a href="{% url 'register' %}" style="display: inline-block;
-                background-color: rgb(193, 27, 27);
+                background-color: #0F9D58;
                 color: white;
                 text-align: center;
                 padding: 14px;
@@ -164,7 +165,7 @@
             {% endfor %}
         </div>
 
-        <div class="navigation_bar" style="background-color: rgb(186, 186, 186); padding: 0px;">
+        <div class="navigation_bar" style="background-color: #007bff; padding: 0px;">
             {% for nav in Navigation_link2 %}
             <a href=" {{ nav.Url }} " style="color: black;">{{nav.Name}}</a>
             {% endfor %}
@@ -174,39 +175,6 @@
     {% block content %}
 
     {% endblock content %}
-
-
-    <!-- Footer part -->
-    <footer>
-        <div class="empty">
-            <hr color=white>
-        </div>
-        <div class="container">
-            <div class="footer-content">
-                <h3>Quick Link</h3>
-                <ul class="list">
-                    <li><a href="{% url 'home' %}">Home</a></li>
-                    <li><a href="{% url 'team' %}">Members</a></li>
-                    <li><a href="{% url 'id_card' %}">ID card Generation</a></li>
-                    <li><a href="{% url 'gallery:gallery' 'all' %}">Gallery</a></li>
-                    <li><a href="{% url 'gallery:news' 'all' %}">News</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-content">
-                <h3>Contact Us</h3>
-                <div id="contact">
-                    <p>Email: emerginglucknow@gmail.com</p>
-                    <p>Phone: +91 9235713766</p>
-                    <p>Address: Jail Road Tambeshwar Nagar near Agrasen Chauraha, Awas Vikas, Fatehpur, Uttar Pradesh,
-                        212601, INDIA</p>
-                </div>
-            </div>
-        </div>
-        <div class="bottom-bar">
-            <p>&copy; 2023 The Emerging India Foundation. Developed by Promist Solution. All rights reserved</p>
-        </div>
-    </footer>
     <script>
         const navigation_bar = document.querySelector('.navigation_bar');
 
@@ -246,6 +214,24 @@
     <!-------- Swiper Js ------------>
     <!-- ---------main js---------- -->
     <script src="{% static 'js/app.js' %}"></script>
+    <div style="display: flex; flex-direction: column;">
+        <div style="flex: 1;">
+            <!-- Main content of the page goes here -->
+        </div>
+
+        <footer
+            style="background-color: #f0f0f0; padding: 20px; text-align: center; font-family: 'Poppins', sans-serif; color: #555;">
+            <p style="margin: 5px 0;">&copy; <span id="currentYear"></span> Your Website Name. All Rights Reserved.</p>
+            <p style="margin: 5px 0;">Powered by Tech Titans A Team no 3</p>
+        </footer>
+    </div>
+
+    <script>
+        // Get the current year and display it in the footer
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+
 </body>
 
 </html>

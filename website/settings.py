@@ -35,19 +35,19 @@ ALLOWED_HOSTS = ['*']
 # django jazzmin config
 JAZZMIN_SETTINGS = {
     # title of the window (Will default to current_admin_site.site_title if absent or None)
-    "site_title": "Emerging India Foundation",
+    "site_title": "Nirogi Janta",
 
     # Title on the login screen (19 chars max) (defaults to current_admin_site.site_header if absent or None)
     "site_header": "Admin Panel",
 
     # Title on the brand (19 chars max) (defaults to current_admin_site.site_header if absent or None)
-    "site_brand": "Emerging India",
+    "site_brand": "Nirogi Janta",
 
     # Logo to use for your site, must be present in static files, used for brand on top left
-    "site_logo": 'logo.png',
+    "site_logo": 'Logo.jpeg',
 
     # Logo to use for your site, must be present in static files, used for login form logo (defaults to site_logo)
-    "login_logo": 'logo_sm.png',
+    "login_logo": 'Logo.jpeg',
 
     # Logo to use for login form in dark themes (defaults to login_logo)
     "login_logo_dark": None,
@@ -62,7 +62,7 @@ JAZZMIN_SETTINGS = {
     "welcome_sign": "welcome to the admin panel",
 
     # Copyright on the footer
-    "copyright": "Emerging India Foundation",
+    "copyright": "Nirogi Janta",
   
     "show_ui_builder": False,
   
@@ -80,9 +80,7 @@ JAZZMIN_SETTINGS = {
     "hide_models": [],
     "topmenu_links": [
         {"name": "Home",  "url": "/", "permissions": ["auth.view_user"]},
-        {"name": "Gallery Image Upload",  "url": "/gallery/upload", "permissions": ["auth.view_user",  "is_superuser"]},
-        {"name": "Gallery News Upload",  "url": "/gallery/upload_news", "permissions": ["auth.view_user",  "is_superuser"]},
-        {"name": "Download Data in Excel",  "url": "/forms/download", "permissions": ["auth.view_user",  "is_superuser"]},
+        
         ],
 
 }
@@ -104,13 +102,9 @@ LOGIN_URL = '/'
 
 INSTALLED_APPS = [
     'Home',
-    'forms',
     'users',
-    'certificates',
-    'gallery',
     'pages',
-    'payments',
-    'jazzmin',
+    'jazzmin', # jazzmin
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -333,3 +327,5 @@ GCP_PRIVATE_KEY_ID = os.getenv("GCP_PRIVATE_KEY_ID")
 GCP_PRIVATE_KEY = os.getenv("GCP_PRIVATE_KEY").replace("\\n", "\n")  # Handle newline characters
 GCP_CLIENT_ID = os.getenv("GCP_CLIENT_ID")
 GCP_CLIENT_X509_CERT_URL = os.getenv("GCP_CLIENT_X509_CERT_URL")
+
+GOOGLE_API_KEY=os.getenv('GOOGLE_API_KEY')

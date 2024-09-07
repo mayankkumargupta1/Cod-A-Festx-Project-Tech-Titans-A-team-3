@@ -18,8 +18,8 @@ from django.utils.encoding import force_bytes, force_str
 from django.core.mail import EmailMessage
 
 from .tokens import account_activation_token
-from forms.models import Volunteer_form
-from certificates.models import certificate
+
+
 
 def activate(request, uidb64, token):
     User = get_user_model()
@@ -41,7 +41,7 @@ def activate(request, uidb64, token):
     return redirect('homepage')
 
 def activateEmail(request, user, to_email):
-    mail_subject = "EMERGING INDIA SITE EMAIL ACTIVATION"
+    mail_subject = "NIROGI JANTA SITE EMAIL ACTIVATION"
     message = render_to_string("template_activate_account.html", {
         'user': user.username,
         'domain': get_current_site(request).domain,
@@ -126,16 +126,13 @@ def profile(request, username):
     if user:
         form = UserUpdateForm(instance=user)
         nav_link = Navigation_link.objects.all()
-        if request.user.is_authenticated:
-            volunteer = Volunteer_form.objects.filter(user=request.user).first
-            cert = certificate.objects.filter(user=request.user).all()
+        
         return render(
             request=request,
             template_name="profile.html",
             context={"form": form,
                     'Navigation_link' : nav_link,
-                    'volunteer': volunteer,
-                    'certificates': cert}
+                    }
             )
     
     return redirect("homepage")

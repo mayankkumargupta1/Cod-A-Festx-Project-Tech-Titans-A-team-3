@@ -1,0 +1,35 @@
+{% extends "template.html" %}
+
+{% block content %}
+<h1 style="text-align: center; color: #007BFF; font-family: 'Poppins', sans-serif; margin-bottom: 20px;">Ask a Doctor
+</h1>
+<form method="POST"
+    style="max-width: 600px; margin: auto; padding: 20px; border: 2px solid #007BFF; border-radius: 10px; background-color: #f0f8ff; box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);">
+    {% csrf_token %}
+    <div style="margin-bottom: 20px; display: flex; justify-content: center;">
+        <label for="{{ form.question.id_for_label }}"
+            style="font-weight: bold; color: #007BFF; font-family: 'Poppins', sans-serif;">Your Question:</label>
+        <textarea id="{{ form.question.id_for_label }}" name="{{ form.question.name }}" rows="4"
+            style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1); transition: border-color 0.3s; resize: none;"
+            placeholder="Type your question here...">{{ form.question.value }}</textarea>
+    </div>
+    <button type="submit"
+        style=" margin: auto;width: 100%; padding: 10px; background-color: #007BFF; border: none; border-radius: 5px; color: white; font-size: 16px; cursor: pointer; transition: background-color 0.3s;">
+        Submit
+    </button>
+</form>
+
+<style>
+    textarea:focus {
+        border-color: #007BFF;
+        outline: none;
+        box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+    }
+
+    button:hover {
+        background-color: #0056b3;
+        /* Darker blue on hover */
+    }
+</style>
+
+{% endblock content %}

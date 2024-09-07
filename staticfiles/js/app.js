@@ -1,6 +1,6 @@
 // -------------------------Typed Js-----------------------------
 const typed = new Typed('.multiple-text', {
-	strings: ['One Step Towards Humanity...', 'एक कदम मानवता की ओर...'],
+	strings: ['One Step Towards Healthy Life...', 'एक कदम स्वस्थ जीवन की ओर...'],
 	typeSpeed: 70,
 	backSpeed: 70,
 	backDelay: 1000,
@@ -65,40 +65,40 @@ ScrollReveal().reveal('.goals-part', { origin: 'top' });
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const counters = document.querySelectorAll('.counter');
+	const counters = document.querySelectorAll('.counter');
 
-    counters.forEach(counter => {
-        counter.innerText = '0';
-        const updateCounter = () => {
-            const target = +counter.getAttribute('data-count').replace(/,/g, '');
-            const duration = 2000; 
-            const startTime = performance.now();
+	counters.forEach(counter => {
+		counter.innerText = '0';
+		const updateCounter = () => {
+			const target = +counter.getAttribute('data-count').replace(/,/g, '');
+			const duration = 2000;
+			const startTime = performance.now();
 
-            const animate = (currentTime) => {
-                const elapsedTime = currentTime - startTime;
-                const progress = Math.min(elapsedTime / duration, 1);
-                const currentCount = Math.floor(progress * target);
+			const animate = (currentTime) => {
+				const elapsedTime = currentTime - startTime;
+				const progress = Math.min(elapsedTime / duration, 1);
+				const currentCount = Math.floor(progress * target);
 
-                if (currentCount >= 1000000) {
-                    counter.innerText = (currentCount / 1000000).toFixed(1) ;
-                } else if (currentCount >= 1000) {
-                    counter.innerText = (currentCount / 1000).toFixed(1) ;
-                } else {
-                    counter.innerText = currentCount.toLocaleString() ;
-                }
+				if (currentCount >= 1000000) {
+					counter.innerText = (currentCount / 1000000).toFixed(1);
+				} else if (currentCount >= 1000) {
+					counter.innerText = (currentCount / 1000).toFixed(1);
+				} else {
+					counter.innerText = currentCount.toLocaleString();
+				}
 
-                if (progress < 1) {
-                    requestAnimationFrame(animate);
-                } else {
-                    counter.innerText = target.toLocaleString() + '+';
-                }
-            };
+				if (progress < 1) {
+					requestAnimationFrame(animate);
+				} else {
+					counter.innerText = target.toLocaleString() + '+';
+				}
+			};
 
-            requestAnimationFrame(animate);
-        };
+			requestAnimationFrame(animate);
+		};
 
-        updateCounter() + '+';
-    });
+		updateCounter() + '+';
+	});
 });
 
 
@@ -106,12 +106,12 @@ let scrollContainer = document.querySelector(".gallery");
 let backBtn = document.getElementById("backBtn");
 let nextBtn = document.getElementById("nextBtn");
 
-nextBtn.addEventListener("click", ()=>{
-    scrollContainer.style.scrollBehaviour = 'smooth'; 
-    scrollContainer.scrollLeft += 1200;
+nextBtn.addEventListener("click", () => {
+	scrollContainer.style.scrollBehaviour = 'smooth';
+	scrollContainer.scrollLeft += 1200;
 });
 
-backBtn.addEventListener("click",()=>{
-    scrollContainer.style.scrollBehaviour = 'smooth'; 
-    scrollContainer.scrollLeft -= 1200;
+backBtn.addEventListener("click", () => {
+	scrollContainer.style.scrollBehaviour = 'smooth';
+	scrollContainer.scrollLeft -= 1200;
 });

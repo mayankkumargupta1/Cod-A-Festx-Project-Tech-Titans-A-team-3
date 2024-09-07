@@ -1,0 +1,99 @@
+{% extends "template.html" %}
+
+
+{% block content %}
+
+<style>
+    .doctor-carousel-container {
+        max-width: 900px;
+        margin: auto;
+        position: relative;
+        overflow-x: auto;
+        /* Enable horizontal scrolling */
+        overflow-y: hidden;
+        /* Disable vertical scrolling */
+        scrollbar-width: none;
+        /* Hide scrollbar for Firefox */
+        -ms-overflow-style: none;
+        /* Hide scrollbar for IE and Edge */
+    }
+
+    .doctor-carousel {
+        display: flex;
+        /* Use flexbox to allow horizontal layout */
+        transition: transform 0.5s ease-in-out;
+        white-space: nowrap;
+        /* Prevent wrapping of items */
+    }
+
+    .doctor-card {
+        min-width: 300px;
+        /* Set the minimum width for each card */
+        margin: 15px;
+        padding: 20px;
+        background-color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        text-align: center;
+        flex-shrink: 0;
+        /* Prevent cards from shrinking */
+    }
+
+    .doctor-profile-pic {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+        margin-bottom: 15px;
+    }
+
+    .doctor-specializations {
+        display: flex;
+        flex-wrap: wrap;
+        /* Allow wrapping of specializations if necessary */
+        justify-content: center;
+        gap: 5px;
+        margin-top: 10px;
+    }
+
+    .specialization-chip {
+        padding: 5px 10px;
+        background-color: #007BFF;
+        color: white;
+        border-radius: 5px;
+        font-size: 14px;
+    }
+
+    /* Hide scrollbar for WebKit browsers */
+    .doctor-carousel-container::-webkit-scrollbar {
+        display: none;
+    }
+</style>
+
+<div class="doctor-carousel-container">
+    <div class="doctor-carousel">
+        {% for doctor in doctors %}
+        <div class="doctor-card">
+            <img src="{{ doctor.profile_picture }}" alt="Profile Picture" class="doctor-profile-pic">
+            <h3 class="doctor-name">{{ doctor.full_name }}</h3>
+            <p class="doctor-email">Email: {{ doctor.email }}</p>
+            <p class="doctor-phone">Phone: {{ doctor.phone_no }}</p>
+            <p class="doctor-experience">Experience: {{ doctor.experience }} years</p>
+            <p class="doctor-work">Work: {{ doctor.work }}</p>
+            <strong>Specializations:</strong>
+            <div class="doctor-specializations">
+                {% for specialization in doctor.specialization.all %}
+                <div class="specialization-chip">{{ specialization.specialization }}</div>
+                {% empty %}
+                <p>No specializations listed</p>
+                {% endfor %}
+            </div>
+        </div>
+        {% empty %}
+        <div class="doctor-card">No doctors available</div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock content %}

@@ -13,7 +13,7 @@ class CustomUserAdmin(UserAdmin, AdvancedSearchAdmin):
     add_form = CustomUserCreationForm
     fieldsets = (
         (None, {'fields': ('username', 'password')}),
-        (('Personal info'), {'fields': ('first_name', 'last_name', 'email')}),
+        (('Personal info'), {'fields': ('first_name', 'last_name', 'email', 'status', 'blood_group', 'gender','age')}),
         (('Profile'), {'fields': ('profile_picture',)}),
         (('Permissions'), {
             'fields': ('is_active', 'is_staff', 'is_superuser', 'user_permissions'),

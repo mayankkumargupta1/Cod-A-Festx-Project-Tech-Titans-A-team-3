@@ -13,13 +13,8 @@ import json
 
 
 def authenticate():
-    # Load the private key from the environment variable
     private_key = os.getenv('GCP_PRIVATE_KEY')
-
-    # Convert the string to a dictionary
     credentials_info = json.loads(private_key)
-
-    # Create credentials using the service account info
     creds = service_account.Credentials.from_service_account_info(credentials_info)
     return creds
 

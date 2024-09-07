@@ -1,0 +1,61 @@
+{% extends "template.html" %}
+
+{% block content %}
+<h1 style="text-align: center; color: #007BFF; font-family: 'Poppins', sans-serif; margin-bottom: 20px;">Your Questions
+</h1>
+<ul style="list-style-type: none; padding: 0; max-width: 600px; margin: auto;">
+    {% for question in questions %}
+    <li
+        style="background-color: #f0f8ff; border: 1px solid #007BFF; border-radius: 5px; padding: 15px; margin-bottom: 10px; transition: box-shadow 0.3s;">
+        <strong style="color: #007BFF;">Question:</strong> {{ question.question }}<br>
+        <strong style="color: #007BFF;">Answer:</strong> {{ question.answer|default:"No answer yet." }}
+    </li>
+    {% empty %}
+    <li style="text-align: center; color: #555; font-family: 'Poppins', sans-serif;">You have not asked any questions
+        yet.</li>
+    {% endfor %}
+</ul>
+<a href="{% url 'ask_doctor' %}"
+    style="display: inline-block; padding: 10px 20px; background-color: #007BFF; border-radius: 5px; color: white; font-size: 16px; text-decoration: none; text-align: center; transition: background-color 0.3s; margin: 20px auto; max-width: 200px;">
+    Ask a new question
+</a>
+
+<style>
+    /* Hover effects */
+    a:hover {
+        background-color: #0056b3;
+        /* Darker blue on hover */
+    }
+
+    li:hover {
+        box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+        /* Subtle shadow on hover */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 600px) {
+        ul {
+            max-width: 100%;
+            /* Full width on smaller screens */
+        }
+
+        a {
+            width: calc(100% - 40px);
+            /* Full width with padding */
+        }
+    }
+
+    @media (min-width: 601px) {
+        ul {
+            max-width: 600px;
+            /* Limit width on larger screens */
+        }
+
+        a {
+            width: auto;
+            /* Reset width for larger screens */
+        }
+    }
+</style>
+
+{% endblock content %}
