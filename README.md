@@ -16,7 +16,7 @@ Nirogi Janta is a web application designed to provide a comprehensive platform f
 - SQLite/PostgreSQL
 
 ## Live Demo
-Visit the live site at: [Nirogi Janta]((https://cod-a-festx-project.onrender.com/))
+Visit the live site at: https://cod-a-festx-project.onrender.com/
 
 ## Local Installation
 
